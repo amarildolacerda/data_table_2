@@ -150,6 +150,10 @@ class _PaginatedDataTable2DemoState extends State<PaginatedDataTable2Demo> {
             (Set<MaterialState> states) {
           return Colors.blue[100]!;
         }),
+        dataRowColor: MaterialStateProperty.resolveWith<Color>(
+            (Set<MaterialState> states) {
+          return Colors.grey;
+        }),
         border: TableBorder(
             top: BorderSide(color: Colors.black),
             bottom: BorderSide(color: Colors.grey[300]!),
