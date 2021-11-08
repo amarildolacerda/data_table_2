@@ -77,10 +77,16 @@ final smlColumns = <DataColumn2>[
     onSort: (int columnIndex, bool ascending) {},
   ),
 ];
-
+var index = 0;
 final testRows = kDesserts.map<DataRow2>((Dessert dessert) {
   return DataRow2(
     key: ValueKey<String>(dessert.name),
+    color:
+        MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+      return (index++ % 2 == 0)
+          ? Colors.blue[100]!.withAlpha(100)
+          : Colors.grey[100]!;
+    }),
     onSelectChanged: (bool? selected) {},
     cells: <DataCell>[
       DataCell(
@@ -162,6 +168,12 @@ class TestDataSource extends DataTableSource {
     final int page = index ~/ kDesserts.length;
     return DataRow.byIndex(
       index: index,
+      color:
+          MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+        return (index % 2 == 0)
+            ? Colors.blue[100]!.withAlpha(100)
+            : Colors.grey[100]!;
+      }),
       selected: _selectedRows.contains(index),
       cells: <DataCell>[
         DataCell(Text(showPage ? '${dessert.name} ($page)' : dessert.name)),
@@ -358,6 +370,12 @@ class DessertDataSourceAsync extends AsyncDataTableSource {
         x.data.map((dessert) {
           return DataRow(
             key: ValueKey<int>(dessert.id),
+            color: MaterialStateProperty.resolveWith<Color>(
+                (Set<MaterialState> states) {
+              return (index % 2 == 0)
+                  ? Colors.blue[100]!.withAlpha(100)
+                  : Colors.grey[100]!;
+            }),
             selected: dessert.selected,
             onSelectChanged: (value) {
               if (value != null)

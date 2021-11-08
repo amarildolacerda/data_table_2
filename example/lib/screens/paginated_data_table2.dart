@@ -143,6 +143,13 @@ class _PaginatedDataTable2DemoState extends State<PaginatedDataTable2Demo> {
         autoRowsToHeight: getCurrentRouteOption(context) == autoRows,
         minWidth: 800,
         fit: FlexFit.tight,
+        headingTextStyle:
+            const TextStyle(color: Colors.black87, fontWeight: FontWeight.bold),
+        headingRowHeight: 40,
+        headingRowColor: MaterialStateProperty.resolveWith<Color>(
+            (Set<MaterialState> states) {
+          return Colors.blue[100]!;
+        }),
         border: TableBorder(
             top: BorderSide(color: Colors.black),
             bottom: BorderSide(color: Colors.grey[300]!),

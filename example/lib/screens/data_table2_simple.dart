@@ -39,13 +39,20 @@ class DataTable2SimpleDemo extends StatelessWidget {
           ],
           rows: List<DataRow>.generate(
               100,
-              (index) => DataRow(cells: [
-                    DataCell(Text('A' * (10 - index % 10))),
-                    DataCell(Text('B' * (10 - (index + 5) % 10))),
-                    DataCell(Text('C' * (15 - (index + 5) % 10))),
-                    DataCell(Text('D' * (15 - (index + 10) % 10))),
-                    DataCell(Text(((index + 0.1) * 25.4).toString()))
-                  ]))),
+              (index) => DataRow(
+                      color: MaterialStateProperty.resolveWith<Color>(
+                          (Set<MaterialState> states) {
+                        return (index % 2 == 0)
+                            ? Colors.blue[100]!.withAlpha(100)
+                            : Colors.grey[100]!;
+                      }),
+                      cells: [
+                        DataCell(Text('A' * (10 - index % 10))),
+                        DataCell(Text('B' * (10 - (index + 5) % 10))),
+                        DataCell(Text('C' * (15 - (index + 5) % 10))),
+                        DataCell(Text('D' * (15 - (index + 10) % 10))),
+                        DataCell(Text(((index + 0.1) * 25.4).toString()))
+                      ]))),
     );
   }
 }

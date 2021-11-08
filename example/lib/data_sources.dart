@@ -135,6 +135,12 @@ class DessertDataSource extends DataTableSource {
     final dessert = desserts[index];
     return DataRow.byIndex(
       index: index,
+      color:
+          MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+        return (index % 2 == 0)
+            ? Colors.blue[100]!.withAlpha(100)
+            : Colors.grey[100]!;
+      }),
       selected: dessert.selected,
       onSelectChanged: (value) {
         if (dessert.selected != value) {
@@ -251,6 +257,12 @@ class DessertDataSourceAsync extends AsyncDataTableSource {
         x.data.map((dessert) {
           return DataRow(
             key: ValueKey<int>(dessert.id),
+            color: MaterialStateProperty.resolveWith<Color>(
+                (Set<MaterialState> states) {
+              return (index % 2 == 0)
+                  ? Colors.blue[100]!.withAlpha(100)
+                  : Colors.grey[100]!;
+            }),
             selected: dessert.selected,
             onSelectChanged: (value) {
               if (value != null)

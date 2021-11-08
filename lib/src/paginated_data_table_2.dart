@@ -168,6 +168,8 @@ class PaginatedDataTable2 extends StatefulWidget {
     this.onSelectAll,
     this.dataRowHeight = kMinInteractiveDimension,
     this.headingRowHeight = 56.0,
+    this.headingTextStyle,
+    this.headingRowColor,
     this.horizontalMargin = 24.0,
     this.columnSpacing = 56.0,
     this.showCheckboxColumn = true,
@@ -260,6 +262,9 @@ class PaginatedDataTable2 extends StatefulWidget {
   ///
   /// This value is optional and defaults to 56.0 if not specified.
   final double headingRowHeight;
+
+  final TextStyle? headingTextStyle;
+  final MaterialStateProperty<Color?>? headingRowColor;
 
   /// The horizontal margin between the edges of the table and the content
   /// in the first and last cells of each row.
@@ -626,6 +631,8 @@ class PaginatedDataTable2State extends State<PaginatedDataTable2> {
           decoration: const BoxDecoration(),
           dataRowHeight: widget.dataRowHeight,
           headingRowHeight: widget.headingRowHeight,
+          headingTextStyle: widget.headingTextStyle,
+          headingRowColor: widget.headingRowColor,
           horizontalMargin: widget.horizontalMargin,
           checkboxHorizontalMargin: widget.checkboxHorizontalMargin,
           columnSpacing: widget.columnSpacing,
