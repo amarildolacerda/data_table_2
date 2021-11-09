@@ -29,6 +29,7 @@ class DataColumn2 extends DataColumn {
       {required Widget label,
       String? tooltip,
       bool numeric = false,
+      this.width,
       Function(int, bool)? onSort,
       this.size = ColumnSize.M})
       : super(label: label, tooltip: tooltip, numeric: numeric, onSort: onSort);
@@ -36,6 +37,7 @@ class DataColumn2 extends DataColumn {
   /// Column sizes are determined based on available width by distributing it
   /// to individual columns accounting for their relative sizes (see [ColumnSize])
   final ColumnSize size;
+  final double? width;
 }
 
 /// Extension of standard [DataRow], adds row level tap events. Also there're
@@ -572,6 +574,7 @@ class DataTable2 extends DataTable {
           } else if (column.size == ColumnSize.L) {
             w *= lmRatio;
           }
+          if (column.width != null) w = column.width!;
         }
         totalWidth += w;
         return w;
